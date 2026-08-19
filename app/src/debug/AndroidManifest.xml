@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <receiver
+            android:name=".debug.RuntimeValidationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.roomlightdesigner.debug.SHOWCASE" />
+                <action android:name="com.example.roomlightdesigner.debug.LOCK" />
+                <action android:name="com.example.roomlightdesigner.debug.PHOTO" />
+                <action android:name="com.example.roomlightdesigner.debug.EXIT_PHOTO" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

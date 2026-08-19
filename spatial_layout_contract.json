@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "project": "RoomLightDesigner",
+  "defaultRoot": "DefaultWindowContainer",
+  "secondaryContainer": {
+    "type": "Stage",
+    "mode": "Mixed",
+    "passthrough": true,
+    "id": "STAGE-ROOM"
+  },
+  "entryWindow": {
+    "id": "W-SHELL",
+    "defaultDp": {"width": 720, "height": 540},
+    "minDp": {"width": 520, "height": 380},
+    "maxDp": {"width": 920, "height": 640}
+  },
+  "stageContent": {
+    "strategy": "ecs_runtime_primitives",
+    "worldScale": "meters",
+    "placementRadiusMeters": {"min": 0.5, "max": 5.0},
+    "maxOrbCount": 8
+  },
+  "uiContract": {
+    "theme": "PicoTheme",
+    "builtInsFirst": true,
+    "material3Allowed": false,
+    "photoModeHidesPanelAndRay": true
+  }
+}

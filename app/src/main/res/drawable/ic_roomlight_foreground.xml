@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  RoomLightDesigner launcher mark: a warm, adjustable light orb surrounded by
+  three spatial light paths. The artwork stays within Android's adaptive-icon
+  safe zone so it remains legible in PICO's circular and rounded masks.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Diffuse halo rings make the mark read as a controllable light source. -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M54,20A34,34 0,1 0,54,88A34,34 0,1 0,54,20"
+        android:strokeColor="#5B4BFF"
+        android:strokeAlpha="0.72"
+        android:strokeWidth="2.5" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M54,27A27,27 0,1 0,54,81A27,27 0,1 0,54,27"
+        android:strokeColor="#A65DFF"
+        android:strokeAlpha="0.62"
+        android:strokeWidth="1.6" />
+
+    <!-- Orbital accents suggest a room-scale lighting field. -->
+    <path
+        android:fillColor="#FFCC79"
+        android:pathData="M27,42A4,4 0,1 0,27,50A4,4 0,1 0,27,42" />
+    <path
+        android:fillColor="#7BCEFF"
+        android:pathData="M77,29A3.5,3.5 0,1 0,77,36A3.5,3.5 0,1 0,77,29" />
+    <path
+        android:fillColor="#E99BFF"
+        android:pathData="M82,66A4.5,4.5 0,1 0,82,75A4.5,4.5 0,1 0,82,66" />
+
+    <!-- The central warm orb is intentionally high contrast for distant use. -->
+    <path
+        android:fillColor="#70335E"
+        android:pathData="M54,35A19,19 0,1 0,54,73A19,19 0,1 0,54,35" />
+    <path
+        android:fillColor="#FF7848"
+        android:pathData="M54,39A15,15 0,1 0,54,69A15,15 0,1 0,54,39" />
+    <path
+        android:fillColor="#FFF1B8"
+        android:pathData="M49,43A9.5,9.5 0,1 0,49,62A9.5,9.5 0,1 0,49,43" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.9"
+        android:pathData="M48.5,45.5A4.5,4.5 0,1 0,48.5,54.5A4.5,4.5 0,1 0,48.5,45.5" />
+
+    <!-- Three short rays distinguish a lighting tool from a generic planet. -->
+    <path
+        android:pathData="M54,26L54,31M32.5,60L37.5,58M70.5,60L75.5,62"
+        android:strokeColor="#FFD16D"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round" />
+</vector>

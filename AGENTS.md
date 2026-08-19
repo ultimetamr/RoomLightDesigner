@@ -1,0 +1,18 @@
+# RoomLightDesigner handoff
+
+- Package: `com.example.roomlightdesigner`; PICO Spatial SDK BOM `0.13.3`.
+- Containers: `DefaultWindowContainer` launcher plus Mixed Passthrough `Stage` (`room-stage`).
+- Main runtime: `app/src/main/java/com/example/roomlightdesigner/content/HomeStage.kt`.
+- Sunset and Moon are runtime ECS 3D assemblies implemented in `Orb3DScene.kt`: PBR sphere core, additive sphere halo, and small 3D particle spheres. Their Compose attachments remain interaction-only.
+- Do not call `Entity.setName` for these runtime assemblies: physical PICO OS rejected UUID-based names with `IllegalArgumentException: Invalid name!`; SDK-generated names are retained.
+- Empty schema-1/2 layouts are seeded once with one head-relative Sunset and Moon orb. Schema 4 resolves implausible physical-device HMD heights (for example `y=0`) to a 1.62 m Stage eye-height fallback and reanchors older below-eye layouts; `starterContentInitialized` is persisted so an explicit Clear remains empty across restarts.
+- Physical trigger input is bridged through the public Tracking SDK in `platform/ControllerInputRuntime.kt`; Android `KeyEvent` handling remains a fallback.
+- Photography uses the PICO system Capture button after the app countdown reaches zero. The app keeps only the selected frame visible until trigger exit. Do not use PixelCopy or Android MediaProjection: physical Swan/PICO OS returns a black 2560x1440 frame because Stage/Passthrough/ECS layers are excluded from public app capture surfaces.
+- Panel/head tracking and sensed-plane obstacle fallback live in `platform/SpatialTrackingRuntime.kt` and `domain/PanelPlacementController.kt`.
+- Build and unit tests: `.\gradlew.bat testDebugUnitTest assembleDebug`.
+- Debug APK: `app/build/outputs/apk/debug/app-debug.apk`.
+- Current verification: host build/tests and SpatialUI design-style verifier pass (0 errors). The eye-height-fixed APK was installed and launched on physical device `PB314XHGKC160016G` on 2026-08-15; PID `15135` remained running, the crash buffer was empty, schema-4 storage migrated all existing orb Y positions to 1.26–2.12 m, and no `Orb3DScene` errors were logged. The device refused ADB screencap while in its current display state, so in-headset visual confirmation remains manual.
+- Photography verification: the failed MediaProjection experiment produced MediaStore row 1190 and `/sdcard/Pictures/RoomLightDesigner/RoomLight_20260815_084711.png`, but the pulled artifact was a fully black 2560x1440 frame. The system-capture fallback APK was installed and launched on Swan device `PB314XHGKC160016G`; PID `19397` remained running, the projection service/permission is absent, and the crash buffer was empty. Final system Capture-button interaction remains manual.
+- Spatial Editor gateway tools were not exposed in the 2026-08-15 host session, so this increment uses only public runtime ECS primitive/material APIs and does not author editor scene files.
+- Launcher icon: `ic_roomlight_foreground.xml` and `ic_roomlight_background.xml` define the adaptive “warm light orb” mark; `ic_roomlight_monochrome.xml` is the system monochrome fallback. The manifest points to `@mipmap/ic_launcher` / `@mipmap/ic_launcher_round`, and the obsolete template PICO 3D-icon metadata is intentionally not registered.
+- Launcher-icon deployment: the 2026-08-19 debug APK (SHA-256 `040DC0A8B59D5791BB9D4DC82B78BB6840359D150757444F932BF541C8C352F6`) was installed on physical device `PB314XHGKC160016G`; `.platform.LaunchActivity` launched successfully, PID `22588` remained alive, and the freshly cleared crash buffer was empty.
